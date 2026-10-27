@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://djm462q0dy6g7" path="res://addons/ursc/canvas_item/dithering.gdshader" id="2_j5yw3"]
 [ext_resource type="PackedScene" uid="uid://omgpoxhoqf0v" path="res://Scenes/Buildings/AbandonedFactory/Hallway.tscn" id="3_kldst"]
 [ext_resource type="PackedScene" uid="uid://dy5as0gnu4sbg" path="res://Scenes/Buildings/AbandonedFactory/Bathroom.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://cxppsjyx7hmii" path="res://Scenes/Buildings/AbandonedFactory/BreakRoom.tscn" id="7_2irst"]
 
 [sub_resource type="Environment" id="Environment_j5yw3"]
 background_energy_multiplier = 0.3
@@ -68,6 +69,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.971, 0, -20)
 [node name="Bathroom" parent="SubViewportContainer/SubViewport/Building/Rooms" unique_id=1114790766 instance=ExtResource("5_b2bpf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.53081, 0, -23.968384)
 
+[node name="BreakRoom" parent="SubViewportContainer/SubViewport/Building/Rooms" unique_id=734492707 instance=ExtResource("7_2irst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.791245, 0, -31.995438)
+
 [node name="Player" parent="SubViewportContainer/SubViewport/Building" unique_id=1709412668 instance=ExtResource("1_iukft")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16119, 1.4805632, -0.3847068)
 
@@ -81,7 +85,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="WarningText2" type="CenterContainer" parent="GUI" unique_id=1196328976]
+[node name="WarningText" type="CenterContainer" parent="GUI" unique_id=1196328976]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_left = 1016.0
@@ -92,7 +97,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/WarningText2" unique_id=1459662120]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/WarningText" unique_id=1459662120]
 layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true

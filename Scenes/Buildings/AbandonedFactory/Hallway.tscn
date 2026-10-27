@@ -70,9 +70,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 3
 [node name="Wall16" parent="Walls" unique_id=1797050565 instance=ExtResource("1_rnijt")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 3, -12)
 
-[node name="Wall22" parent="Walls" unique_id=294579710 instance=ExtResource("1_rnijt")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 0, -16)
-
 [node name="Wall23" parent="Walls" unique_id=1930196609 instance=ExtResource("1_rnijt")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 3, -16)
 
@@ -382,6 +379,9 @@ transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8
 
 [node name="DoorwayWooden" parent="." unique_id=1206104624 instance=ExtResource("3_po8v3")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.181826, 0, -4)
+
+[node name="DoorwayWooden2" parent="." unique_id=1018737954 instance=ExtResource("3_po8v3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.181826, 0, -16)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=941640060]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9781065, 0, -11.31987)
