@@ -28,3 +28,8 @@ autoplay = true
 
 [node name="FlickingOffSound" type="AudioStreamPlayer3D" parent="." unique_id=212366608]
 stream = ExtResource("5_lqx4l")
+
+[node name="FlickerTimer" type="Timer" parent="." unique_id=183813396]
+one_shot = true
+
+[connection signal="timeout" from="FlickerTimer" to="." method="FlickerLight"]
