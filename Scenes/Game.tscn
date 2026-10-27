@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://bs3hdqi5cybjk"]
+
+[ext_resource type="Script" uid="uid://bunxwkfbir4ch" path="res://Scripts/StandStillGame.gd" id="1_7lihs"]
+[ext_resource type="PackedScene" uid="uid://dbe3plxb4qs43" path="res://Scenes/Player.tscn" id="1_iukft"]
+[ext_resource type="AudioStream" uid="uid://droktc44ger2h" path="res://Audio/unknown_entity_distant_mx_5.ogg" id="2_fgofq"]
+[ext_resource type="PackedScene" uid="uid://cjx46nrcy4bj2" path="res://Scenes/Buildings/AbandonedFactory/Reception.tscn" id="2_gl6un"]
+[ext_resource type="Shader" uid="uid://djm462q0dy6g7" path="res://addons/ursc/canvas_item/dithering.gdshader" id="2_j5yw3"]
+[ext_resource type="PackedScene" uid="uid://omgpoxhoqf0v" path="res://Scenes/Buildings/AbandonedFactory/Hallway.tscn" id="3_kldst"]
+[ext_resource type="PackedScene" uid="uid://dy5as0gnu4sbg" path="res://Scenes/Buildings/AbandonedFactory/Bathroom.tscn" id="5_b2bpf"]
+
+[sub_resource type="Environment" id="Environment_j5yw3"]
+background_energy_multiplier = 0.3
+ssao_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 2.0
+fog_depth_begin = 0.0
+fog_depth_end = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5yw3"]
+shader = ExtResource("2_j5yw3")
+shader_parameter/color_depth = 32.0
+
+[node name="Game" type="Node3D" unique_id=843127304]
+
+[node name="StandStillGame" type="Node3D" parent="." unique_id=787097133]
+script = ExtResource("1_7lihs")
+
+[node name="Timer" type="Timer" parent="StandStillGame" unique_id=487349827]
+one_shot = true
+
+[node name="Screach" type="AudioStreamPlayer" parent="StandStillGame" unique_id=189845306]
+unique_name_in_owner = true
+stream = ExtResource("2_fgofq")
+volume_db = 4.0
+pitch_scale = 0.7
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2023318096]
+environment = SubResource("Environment_j5yw3")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1805123557]
+material = SubResource("ShaderMaterial_j5yw3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_right = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=674639002]
+handle_input_locally = false
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(1494, 720)
+render_target_update_mode = 4
+
+[node name="Building" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=698056967]
+
+[node name="Rooms" type="Node3D" parent="SubViewportContainer/SubViewport/Building" unique_id=926708038]
+
+[node name="Reception" parent="SubViewportContainer/SubViewport/Building/Rooms" unique_id=628971563 instance=ExtResource("2_gl6un")]
+
+[node name="Hallway" parent="SubViewportContainer/SubViewport/Building/Rooms" unique_id=129163767 instance=ExtResource("3_kldst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.971, 0, -20)
+
+[node name="Bathroom" parent="SubViewportContainer/SubViewport/Building/Rooms" unique_id=1114790766 instance=ExtResource("5_b2bpf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.53081, 0, -23.968384)
+
+[node name="Player" parent="SubViewportContainer/SubViewport/Building" unique_id=1709412668 instance=ExtResource("1_iukft")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16119, 1.4805632, -0.3847068)
+
+[node name="GUI" type="Control" parent="." unique_id=828243715]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WarningText2" type="CenterContainer" parent="GUI" unique_id=1196328976]
+visible = false
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 670.0
+offset_right = 1279.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/WarningText2" unique_id=1459662120]
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font_size=36][wave amp=10][pulse freq=2 ease=5][shake rate=20 level=8][color=red]FIRST MISTAKE."
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="DontMoveText" type="CenterContainer" parent="GUI" unique_id=396467422]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/DontMoveText" unique_id=1058822623]
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font_size=36][wave amp=10][pulse freq=2 ease=5][shake rate=20 level=8][color=red]DON'T MOVE"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RunText" type="CenterContainer" parent="GUI" unique_id=723874266]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 527.0
+offset_top = 335.0
+offset_right = 752.0
+offset_bottom = 385.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/RunText" unique_id=237781866]
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font_size=36][wave amp=10][pulse freq=2 ease=5][shake rate=20 level=8][color=red]HIDE."
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="timeout" from="StandStillGame/Timer" to="StandStillGame" method="_on_timer_timeout"]

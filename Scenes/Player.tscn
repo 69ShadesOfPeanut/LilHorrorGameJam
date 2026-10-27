@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dbe3plxb4qs43"]
+
+[ext_resource type="Script" uid="uid://7pfrxkprv7ef" path="res://Scripts/Player.gd" id="1_rpqav"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dxoup"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1778880231]
+script = ExtResource("1_rpqav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=348608866]
+shape = SubResource("CapsuleShape3D_dxoup")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1642333571]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6934028, 0)
+current = true
+
+[node name="PlayerInteractRay" type="RayCast3D" parent="Camera3D" unique_id=29800990]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+collision_mask = 2

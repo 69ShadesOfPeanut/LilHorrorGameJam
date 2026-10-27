@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://csgsilg2enhtl"]
+
+[ext_resource type="PackedScene" uid="uid://mjdjqm2jvc74" path="res://Assets/ModularBuilds/GlassDoorWay1/GlassDoorWay1.gltf" id="1_0pf2s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0pf2s"]
+size = Vector3(4, 3, 0.4)
+
+[node name="GlassDoorWay1" type="Node3D" unique_id=234201763]
+
+[node name="default" parent="." unique_id=951224046 instance=ExtResource("1_0pf2s")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=176472929]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1427255149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_0pf2s")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bgomarda8s6h0"]
+
+[ext_resource type="PackedScene" uid="uid://dokoe0cwx4s8x" path="res://Assets/ModularBuilds/DoorwayWooden/DoorwayWooden.tscn" id="1_3do7b"]
+[ext_resource type="Texture2D" uid="uid://b1hdt1ttxrw1r" path="res://Assets/ModularBuilds/Wall2/Wall2_wall_3.png" id="2_pg85m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pg85m"]
+albedo_texture = ExtResource("2_pg85m")
+
+[node name="DoorwayWooden" unique_id=1206104624 instance=ExtResource("1_3do7b")]
+
+[node name="doorway_rx_1" parent="doorway_rx_12" parent_id_path=PackedInt32Array(1656682280) index="0" unique_id=200405588]
+surface_material_override/0 = SubResource("StandardMaterial3D_pg85m")
+
+[editable path="doorway_rx_12"]

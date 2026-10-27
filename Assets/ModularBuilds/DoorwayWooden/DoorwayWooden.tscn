@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dokoe0cwx4s8x"]
+
+[ext_resource type="PackedScene" uid="uid://dc4ocp0emgkpi" path="res://Assets/ModularBuilds/DoorwayWooden/doorway_rx_1.glb" id="1_yritm"]
+[ext_resource type="AudioStream" uid="uid://5p00dcc250l5" path="res://Audio/heavy_door_open-close_1.ogg" id="2_0mu5x"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yritm"]
+points = PackedVector3Array(-1, -9.313226e-09, -3.699501e-17, -1, -9.313226e-09, 0.049995106, -1, 2.1000001, -3.699501e-17, 0, -9.313226e-09, -3.699501e-17, 0, -9.313226e-09, 0.049995106, -1, 2.1000001, 0.049995106, 0, 2.1000001, -3.699501e-17, 0, 2.1000001, 0.049995106)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yritm"]
+size = Vector3(1.4454346, 3, 0.4)
+
+[sub_resource type="Animation" id="Animation_yritm"]
+resource_name = "Door"
+length = 0.5
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("doorway_rx_12/doorway_rx_1/door_hr_11")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.46666667, 1, 0, 0.79335326, 0, 0.6087614)
+
+[sub_resource type="Animation" id="Animation_0mu5x"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("doorway_rx_12/doorway_rx_1/door_hr_11")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ufto"]
+_data = {
+&"Door": SubResource("Animation_yritm"),
+&"RESET": SubResource("Animation_0mu5x")
+}
+
+[node name="DoorwayWooden" type="Node3D" unique_id=1206104624]
+
+[node name="doorway_rx_12" parent="." unique_id=1656682280 instance=ExtResource("1_yritm")]
+
+[node name="door_hr_11" parent="doorway_rx_12/doorway_rx_1" parent_id_path=PackedInt32Array(1656682280, 200405588) index="0" unique_id=1226625954]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.5, 0, 3.61999e-05)
+
+[node name="DoorInteractZone" type="AnimatableBody3D" parent="." unique_id=1431905939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.61999e-05)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorInteractZone" unique_id=621045016]
+shape = SubResource("ConvexPolygonShape3D_yritm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=406633785]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=506052536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2772827, 1.5, 0)
+shape = SubResource("BoxShape3D_yritm")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1014809167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2590523, 1.5, 0)
+shape = SubResource("BoxShape3D_yritm")
+
+[node name="DoorAnimationPlayer" type="AnimationPlayer" parent="." unique_id=865776668]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_5ufto")
+
+[node name="DoorAudioStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1076454347]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4449708, -0.07278341)
+stream = ExtResource("2_0mu5x")
+
+[editable path="doorway_rx_12"]

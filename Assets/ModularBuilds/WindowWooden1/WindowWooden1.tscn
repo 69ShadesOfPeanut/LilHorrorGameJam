@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://tfluih1ud28o"]
+
+[ext_resource type="PackedScene" uid="uid://bk7xwx0ny4yfj" path="res://Assets/ModularBuilds/WindowWooden1/WindowWooden1.gltf" id="1_jcl6w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcl6w"]
+size = Vector3(4, 3, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcl6w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ecpyl"]
+size = Vector3(4, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u76ov"]
+size = Vector3(4, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_05dm7"]
+size = Vector3(1, 3, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jcl6w"]
+size = Vector3(1, 3, 0.5)
+
+[node name="WindowWooden1" type="Node3D" unique_id=1562629834]
+
+[node name="default" parent="." unique_id=1154424614 instance=ExtResource("1_jcl6w")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=953988351]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=76379764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_jcl6w")
+
+[node name="Shadow" type="Node3D" parent="." unique_id=115306606]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shadow" unique_id=776584253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0038146973, 0.50251216, 0)
+material_override = SubResource("StandardMaterial3D_jcl6w")
+visibility_range_begin = 4096.0
+mesh = SubResource("BoxMesh_ecpyl")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Shadow" unique_id=411770286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0038146973, 3.0152109, 0)
+material_override = SubResource("StandardMaterial3D_jcl6w")
+visibility_range_begin = 4096.0
+mesh = SubResource("BoxMesh_u76ov")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Shadow" unique_id=1509889444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5158341, 1.5105689, 0)
+material_override = SubResource("StandardMaterial3D_jcl6w")
+visibility_range_begin = 4096.0
+mesh = SubResource("BoxMesh_05dm7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Shadow" unique_id=1499479189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4841659, 1.5105689, 0)
+material_override = SubResource("StandardMaterial3D_jcl6w")
+visibility_range_begin = 4096.0
+mesh = SubResource("BoxMesh_jcl6w")

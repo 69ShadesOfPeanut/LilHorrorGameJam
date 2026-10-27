@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://k17pv5jldhgl"]
+
+[ext_resource type="PackedScene" uid="uid://b5kt6ge3hskap" path="res://Assets/Furniture/TableLarge/table_large_3_4.gltf" id="1_a7qma"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxoup"]
+size = Vector3(1.6, 0.911, 0.7)
+
+[node name="TableLarge" type="Node3D" unique_id=155473592]
+
+[node name="default" parent="." unique_id=1880998176 instance=ExtResource("1_a7qma")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=477214773]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=471396047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0009765625, 0.4555664, -0.0042133927)
+shape = SubResource("BoxShape3D_dxoup")

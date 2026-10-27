@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://m5t23qdwfn0j"]
+
+[ext_resource type="PackedScene" uid="uid://bijs3v5hj6gxk" path="res://Assets/ModularBuilds/CarpetFloor1/CarpetFloor1.gltf" id="1_kqldy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxoup"]
+size = Vector3(4, 0.39160156, 4)
+
+[node name="CarpetFloor1" type="Node3D" unique_id=198041557]
+
+[node name="default" parent="." unique_id=1580277452 instance=ExtResource("1_kqldy")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=487907435]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1093022353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19384766, 0)
+shape = SubResource("BoxShape3D_dxoup")
