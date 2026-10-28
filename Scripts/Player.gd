@@ -5,6 +5,7 @@ extends CharacterBody3D
 # Nodes
 @onready var CameraNode : Camera3D = get_node("%Camera3D")
 @onready var PlayerInteractRay : RayCast3D = get_node("%PlayerInteractRay")
+@onready var InteractTextNode : RichTextLabel = get_node("%InteractText")
 # Exports
 @export var Speed := 2.5
 @export var Gravity := 30
@@ -42,6 +43,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
+	# Check if player interact ray is colliding
+	# Display text telling player to interact
+	if PlayerInteractRay.is_colliding() and InteractTextNode.visible == false:
+		InteractTextNode.visible = true
+		
+		if Input.is_action_just_pressed("Interact"):
+			var Interactable = PlayerInteractRay.get_collider()
+			Interactable.Interact()
+	elif InteractTextNode.visible == true:
+		InteractTextNode.visible = false
+	
 	# Handles mouse movement
 	# Set camera rotation sensitivity on x axis
 	CameraNode.rotation_degrees.x -= MouseDelta.y * LookSensitivity * delta
@@ -57,14 +69,3 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		MouseDelta = event.relative
-
-# Handle keyinputs
-func _unhandled_key_input(event: InputEvent) -> void:
-	# Handle interactions
-	if event.is_action_pressed("Interact"):
-		if PlayerInteractRay.is_colliding() == true and PlayerInteractRay.get_collider().name == "DoorInteractZone":
-			var DoorInteractAnim : AnimationPlayer = PlayerInteractRay.get_collider().get_node("%DoorAnimationPlayer")
-			var DoorAudioStreamPlayer : AudioStreamPlayer3D = PlayerInteractRay.get_collider().get_node("%DoorAudioStreamPlayer")
-			DoorInteractAnim.play("Door")
-			DoorAudioStreamPlayer.play()
-			PlayerInteractRay.get_collider().queue_free()

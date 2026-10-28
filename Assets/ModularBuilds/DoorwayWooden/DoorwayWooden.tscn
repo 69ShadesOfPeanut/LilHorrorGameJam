@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dokoe0cwx4s8x"]
 
+[ext_resource type="Script" uid="uid://dep2umgxiciao" path="res://Scripts/Interactable/Door.gd" id="1_5ufto"]
 [ext_resource type="PackedScene" uid="uid://dc4ocp0emgkpi" path="res://Assets/ModularBuilds/DoorwayWooden/doorway_rx_1.glb" id="1_yritm"]
 [ext_resource type="AudioStream" uid="uid://5p00dcc250l5" path="res://Audio/heavy_door_open-close_1.ogg" id="2_0mu5x"]
 
@@ -47,6 +48,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.5, 0, 3.6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.61999e-05)
 collision_layer = 3
 collision_mask = 3
+script = ExtResource("1_5ufto")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorInteractZone" unique_id=621045016]
 shape = SubResource("ConvexPolygonShape3D_yritm")
