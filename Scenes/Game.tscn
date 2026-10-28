@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bs3hdqi5cybjk"]
 
 [ext_resource type="Script" uid="uid://bunxwkfbir4ch" path="res://Scripts/StandStillGame.gd" id="1_7lihs"]
+[ext_resource type="Script" uid="uid://dx370ya0c4fff" path="res://Scripts/Game.gd" id="1_bf53h"]
 [ext_resource type="PackedScene" uid="uid://dbe3plxb4qs43" path="res://Scenes/Player.tscn" id="1_iukft"]
 [ext_resource type="AudioStream" uid="uid://droktc44ger2h" path="res://Audio/unknown_entity_distant_mx_5.ogg" id="2_fgofq"]
 [ext_resource type="PackedScene" uid="uid://cjx46nrcy4bj2" path="res://Scenes/Buildings/AbandonedFactory/Reception.tscn" id="2_gl6un"]
@@ -23,7 +24,69 @@ fog_depth_end = 20.0
 shader = ExtResource("2_j5yw3")
 shader_parameter/color_depth = 32.0
 
+[sub_resource type="Animation" id="Animation_bf53h"]
+resource_name = "FadeOut"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.033333335, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_71axn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dahhg"]
+_data = {
+&"FadeOut": SubResource("Animation_bf53h"),
+&"RESET": SubResource("Animation_71axn")
+}
+
 [node name="Game" type="Node3D" unique_id=843127304]
+script = ExtResource("1_bf53h")
 
 [node name="StandStillGame" type="Node3D" parent="." unique_id=787097133]
 script = ExtResource("1_7lihs")
@@ -146,5 +209,25 @@ text = "[font_size=36][wave amp=10][pulse freq=2 ease=5][shake rate=20 level=8][
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="IntroText" type="CenterContainer" parent="GUI" unique_id=2089403655]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="GUI/IntroText" unique_id=2085397902]
+layout_mode = 2
+text = "You are exploring an abandoned industrial warehouse when you get split up from your friend...
+
+Find them by any means..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/IntroText" unique_id=417559190]
+libraries/ = SubResource("AnimationLibrary_dahhg")
 
 [connection signal="timeout" from="StandStillGame/Timer" to="StandStillGame" method="_on_timer_timeout"]

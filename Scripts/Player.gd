@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var CameraNode : Camera3D = get_node("%Camera3D")
 @onready var PlayerInteractRay : RayCast3D = get_node("%PlayerInteractRay")
 # Exports
-@export var Speed := 4
+@export var Speed := 2.5
 @export var Gravity := 30
 @export var LookSensitivity := 35
 @export var MinLookAngle := -90
