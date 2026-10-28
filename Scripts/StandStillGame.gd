@@ -41,7 +41,7 @@ func _on_timer_timeout() -> void:
 func RandomTime():
 	PlayerMoved = false
 	randomize()
-	var RandomNumber = randi() % MaxTimer + 1
+	var RandomNumber = randi_range(40, MaxTimer)
 	print("Random number is: " + str(RandomNumber))
 	TimerNode.start(RandomNumber)
 
