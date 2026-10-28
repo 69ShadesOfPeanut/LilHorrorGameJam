@@ -12,6 +12,7 @@ extends Node3D
 # Export vars
 @export var LightStatus : bool = true
 @export var Flickering : bool = false
+@export var MainMenu : bool = false
 
 
 # Handle if lights are on or off at start
@@ -43,7 +44,7 @@ func FlickerLight() -> void:
 		i += 1
 		
 		# MAIN MENU ONLY
-		if get_node("%FaceMask") != null and AreaLight.visible == false:
+		if MainMenu == true and AreaLight.visible == false:
 			if randi_range(0, 350) == 350:
 				#print("Face Shown")
 				get_node("%FaceMask").visible = true
